@@ -118,3 +118,19 @@ footer {
   position: absolute;
   bottom: 0;
 }
+
+button {
+    background-color: #007FFF;
+    border: none;
+    color: white;
+    width: 15%;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button:hover {
+  background-color: #098FFF
+}
