@@ -1,12 +1,10 @@
 #map {
   float: left;
-  height: 800px;
+  height: 550px;
   width: 80%;
 }
 
-p{
-  padding: 10px;
-}
+
 
 a{
   text-decoration: none;
@@ -22,7 +20,7 @@ video{
 }
 
 body {
-  background-color: green;
+  background-color: white;
   margin: 0;
 }
 
@@ -35,6 +33,14 @@ h2 {
   font-family: "helvetica";
   font-size: 25px;
   color: white;
+}
+
+h3{
+  font-family: "helvetica";
+  font-size: 25px;
+  color: black;
+  margin-left: 5px;
+
 }
 
 .titles{
@@ -50,7 +56,7 @@ h2 {
 }
 
 .overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(	138,	119,	107, 0.7), rgba(0, 0, 0, 0));
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(	0,	0,	0, 0.5), rgba(0, 0, 0, 0));
   overflow: hidden;
   position: relative;
   top: -300px;
@@ -98,7 +104,7 @@ h2 {
 }
 
 .layoutElement1{
-  height: 250px;
+  height: 225px;
 }
 
 
@@ -115,8 +121,13 @@ h2 {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
+  right: 0;
   bottom: 0;
+  left: 0;
+  height: 40px;
+  text-align: center;
+  background-color:#007FFF;
 }
 
 button {
