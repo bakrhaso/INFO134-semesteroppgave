@@ -4,8 +4,6 @@
   width: 80%;
 }
 
-
-
 a{
   text-decoration: none;
 }
@@ -52,7 +50,8 @@ h3{
 
 .main {
     margin: auto;
-    background-color: white;
+    display: flex;
+    flex-direction: row;
 }
 
 .overlay {
@@ -85,7 +84,10 @@ h3{
 
 
 .anbefalinger{
-  float: left;
+  width: 50%;
+}
+
+.hotspots{
   width: 50%;
 }
 
@@ -98,15 +100,9 @@ h3{
 
 }
 
-.hotspots{
-  float: right;
-  width: 50%;
-}
-
 .layoutElement1{
   height: 225px;
 }
-
 
 .content{
   margin: auto;
@@ -114,7 +110,6 @@ h3{
 }
 
 .contentbody {
-
   position: absolute;
   top: 0px;
   width: 100%
