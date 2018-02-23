@@ -1,6 +1,10 @@
 console.log("tekst"); // Printer "tekst" i konsollen
 
+<<<<<<< HEAD
 var map; // Variabel for Google Maps kartet
+=======
+var map; // Variabel for Google Maps
+>>>>>>> 718351cbe806385882cd12ed5e2443790bf31f5b
 var bergen = {lat: 60.3913, lng: 5.3221}; // Variabel for Bergens koordinater
 
 // Initialiserer kartet
