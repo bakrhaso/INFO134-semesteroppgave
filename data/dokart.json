@@ -1,5 +1,5 @@
-{
-  "entries": [{
+[
+  {
     "herre": "1",
     "tid_sondag": "07.00 - 23.15",
     "pissoir_only": "NULL",
@@ -239,8 +239,5 @@
     "place": "NORDNES SKOLE",
     "dame": "NULL",
     "longitude": "5.307858"
-  }],
-  "page": 1,
-  "pages": 1,
-  "posts": 15
-}
+  }
+]
