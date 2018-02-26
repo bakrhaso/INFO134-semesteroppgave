@@ -3,6 +3,7 @@ console.log("tekst"); // Printer "tekst" i konsollen
 var map; // Variabel for Google Maps kartet
 var bergen = {lat: 60.3913, lng: 5.3221}; // Variabel for Bergens koordinater
 
+
 // Initialiserer kartet
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -18,23 +19,31 @@ function loadJSON() {
   request.open("GET", "../data/dokart.json", true);
   request.send(null)
   request.onreadystatechange = function() {
-  if ( request.readyState === 4 && request.status === 200 ) {
+  if (request.readyState === 4 && request.status === 200) {
     var data = JSON.parse(request.responseText);
     console.log(data);
+    populateTable(data);
     populateMap(data);
     }
+  }
+}
+
+// Legger til data in table
+function populateTable(jsonObj) {
+  for(var i = 0; i < jsonObj.length; ++i) {
+
   }
 }
 
 // Legger til markers på kartet hvor det er toaletter
 function populateMap(jsonObj) {
   for(var i = 0; i < jsonObj.length; ++i) {
-    console.log(typeof jsonObj[i]["latitude"])
     var position = {lat: +jsonObj[i]["latitude"], lng: +jsonObj[i]["longitude"]} // Koordinatene er strings i JSON, +'en gjør dem til nummer
     var marker = new google.maps.Marker({
       position: position,
-      map: map
-    })
+      map: map,
+      label: jsonObj[i]["id"]
+    });
   }
 }
 
