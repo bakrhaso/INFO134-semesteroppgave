@@ -12,6 +12,7 @@ function initMap() {
   loadJSON();
 }
 
+// Laste inn JSON filen med do-dataen, så kaller den populateMap som legger til markers på kartet
 function loadJSON() {
   var request = new XMLHttpRequest();
   request.open("GET", "../data/dokart.json", true);
@@ -25,10 +26,11 @@ function loadJSON() {
   }
 }
 
+// Legger til markers på kartet hvor det er toaletter
 function populateMap(jsonObj) {
   for(var i = 0; i < jsonObj.length; ++i) {
     console.log(typeof jsonObj[i]["latitude"])
-    var position = {lat: +jsonObj[i]["latitude"], lng: +jsonObj[i]["longitude"]}
+    var position = {lat: +jsonObj[i]["latitude"], lng: +jsonObj[i]["longitude"]} // Koordinatene er strings i JSON, +'en gjør dem til nummer
     var marker = new google.maps.Marker({
       position: position,
       map: map
