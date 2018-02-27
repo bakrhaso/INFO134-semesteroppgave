@@ -22,7 +22,6 @@ function loadJSON() {
   if (request.readyState === 4 && request.status === 200) {
     var data = JSON.parse(request.responseText);
     console.log(data);
-    populateTable(data);
     populateMap(data);
     }
   }
@@ -30,8 +29,14 @@ function loadJSON() {
 
 // Legger til data in table
 function populateTable(jsonObj) {
-  for(var i = 0; i < jsonObj.length; ++i) {
-
+  var table = document.getElementById("doBord");
+  var newRow, newCell;
+  for(var i = 1; i < jsonObj.length + 1; ++i) {
+    newRow = table.insertRow(i);
+    for(var x in jsonObj) {
+      newCell = newRow.insertCell(-1);
+      newCell.innerHTML = jsonObj[i]["id"];
+    }
   }
 }
 
@@ -45,6 +50,7 @@ function populateMap(jsonObj) {
       label: jsonObj[i]["id"]
     });
   }
+  populateTable(jsonObj);
 }
 
 // Starter videoen på index.html, looper

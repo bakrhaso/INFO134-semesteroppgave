@@ -1,7 +1,11 @@
 #map {
   float: left;
-  height: 550px;
-  width: 80%;
+  height: 600px;
+  width: 100%;
+}
+
+tr:nth-child(odd) {
+  background-color: #CCCCCC;
 }
 
 a{
