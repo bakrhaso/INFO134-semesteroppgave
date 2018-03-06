@@ -33,10 +33,24 @@ function populateTable(jsonObj) {
   var newRow, newCell;
   for(var i = 1; i < jsonObj.length + 1; ++i) {
     newRow = table.insertRow(i);
-    for(var x in jsonObj) {
-      newCell = newRow.insertCell(-1);
-      newCell.innerHTML = jsonObj[i]["id"];
-    }
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["id"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["adresse"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["tid_hverdag"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["tid_lordag"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["tid_sondag"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["herre"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["dame"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["rullestol"];
+    newCell = newRow.insertCell(-1);
+    newCell.innerHTML = jsonObj[i - 1]["pris"];
   }
 }
 
