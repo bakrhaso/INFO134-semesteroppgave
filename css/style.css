@@ -41,8 +41,27 @@ h3{
   font-family: "helvetica";
   font-size: 25px;
   color: black;
-  margin-left: 5px;
+}
 
+/* anbefalinger.html */
+.contentBox {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  border: 2px;
+  border-style: solid;
+}
+
+.contentLeft {
+
+}
+
+.contentCenter {
+  width: 80%;
+}
+
+.contentRight {
+  
 }
 
 .titles{
