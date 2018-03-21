@@ -54,17 +54,10 @@ function populateTable(jsonObj) {
   }
 }
 
-<<<<<<< HEAD
-// Legger til markers pÃ¥ kartet hvor det er toaletter
-function populateMap(jsonObj) {
-  for(var i = 0; i < jsonObj.length; ++i) {
-    var position = {lat: +jsonObj[i]["latitude"], lng: +jsonObj[i]["longitude"]} // Koordinatene er strings i JSON, +'en gjÃ¸r dem til nummer
-=======
 // Legger til markers på kartet hvor det er toaletter
 function populateMap(jsonObj) {
   for(var i = 0; i < jsonObj.length; ++i) {
     var position = {lat: +jsonObj[i]["latitude"], lng: +jsonObj[i]["longitude"]} // Koordinatene er strings i JSON, +'en gjør dem til nummer
->>>>>>> b960133a7a6ec789967f3d50c00f4f3f6a595e3b
     var marker = new google.maps.Marker({
       position: position,
       map: map,
