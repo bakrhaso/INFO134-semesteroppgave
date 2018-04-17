@@ -8,6 +8,23 @@ tr:nth-child(odd) {
   background-color: #CCCCCC;
 }
 
+table {
+  table-layout: auto;
+  width: 80%;
+  margin: auto;
+}
+
+table, th, td, tr {
+  border-collapse: collapse;
+}
+
+#sok {
+  background-color: green;
+  height: 100px;
+  width: 80%;
+  margin: auto;
+}
+
 a{
   text-decoration: none;
 }
@@ -61,7 +78,7 @@ h3{
 }
 
 .contentRight {
-  
+
 }
 
 .titles{
