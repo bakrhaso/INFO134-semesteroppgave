@@ -13,10 +13,10 @@ function initMap() {
   loadJSON();
 }
 
-// Laste inn JSON filen med do-dataen, sÃ¥ kaller den populateMap som legger til markers pÃ¥ kartet
+// Laste inn JSON filen med do-dataen, så kaller den populateMap som legger til markers på kartet
 function loadJSON() {
   var request = new XMLHttpRequest();
-  request.open("GET", "../media/dokart.json", true);
+  request.open("GET", "media/dokart.json", true);
   request.send(null)
   request.onreadystatechange = function() {
   if (request.readyState === 4 && request.status === 200) {
@@ -38,6 +38,8 @@ function populateTable(jsonObj) {
       newCell = newRow.insertCell(-1);
       if(jsonObj[i - 1][array[j]] == "NULL" || jsonObj[i - 1][array[j]] == "") {
         newCell.innerHTML = "Nei";
+      } else if(jsonObj[i - 1][array[j]] == "1") {
+        newCell.innerHTML = "Ja";
       } else {
         newCell.innerHTML = jsonObj[i - 1][array[j]];
       }
