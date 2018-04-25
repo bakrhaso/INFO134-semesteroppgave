@@ -1,9 +1,11 @@
 console.log("tekst"); // Printer "tekst" i konsollen
 
+var map;
+
 // Initialiserer kartet
 function initMap() {
   var bergen = {lat: 60.3913, lng: 5.3221};
-  var map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
     center: bergen
   });
@@ -16,17 +18,34 @@ function loadJSON(url) {
   request.open('GET', url, true);
   request.onload = function() {
     if (request.status === 200) {
-      var response = request.response;
-      console.log(response);
+      var response = request.response["entries"];
+      populateMap(response);
+      populateList(response, url);
     }
   };
   request.send(null);
 }
 
-function populateMap(url) {
-  var json = loadJSON(url);
-  console.log("adasda");
-  console.log(json);
+function populateMap(response) {
+  var i = 1;
+  response.forEach(element => {
+    var position = {lat: +element["latitude"], lng: +element["longitude"]};
+    var marker = new google.maps.Marker({position: position, label: "" + i, map: map});
+    ++i;
+  });
+}
+
+function populateList(response, url) {
+  var toalettRegex = /dokart/;
+  var lekeplassReex = /lekeplass/;
+  var list = document.getElementById("list");
+  console.log(list);
+
+  if(toalettRegex.test(url)) {
+    response.forEach(element => {
+      list.innerHTML += "<li>" + element["plassering"] + "</li>";
+    });
+  }
 }
 
 // Starter videoen i index.html, looper
@@ -39,5 +58,5 @@ function playVid() {
 
 function initHotspots() {
   initMap();
-  populateMap("https://hotell.difi.no/api/json/bergen/dokart");
+  loadJSON("https://hotell.difi.no/api/json/bergen/dokart");
 }
