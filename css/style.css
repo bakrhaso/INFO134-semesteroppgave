@@ -1,28 +1,110 @@
+/* Mobile css */
+@media only screen and (max-width: 600px) {
+  .mobileContent {
+    display: inline;
+  }
+  .indexBody {
+    display: none;
+  }
+  .logo {
+    width: 150px;
+  }
+}
+
+/* Tablet css */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  h2 {
+    color: black;
+  }
+  .mobileContent {
+    display: inline;
+  }
+  .indexBody {
+    display: none;
+  }
+  .logo {
+    width: 250px;
+  }
+
+}
+
+/* Labtop css */
+@media only screen and (min-width: 1200px) and (max-width: 1450px) {
+  .mobileContent {
+    display: none;
+  }
+  .logo {
+    width: 400px;
+  }
+}
+
+/* Desktop css */
+@media only screen and (min-width: 1450) {
+  h2 {
+      font-family: "helvetica";
+      font-size: 50px;
+      color: white;
+  }
+
+  .mobileContent {
+    display: none;
+  }
+
+  .logo {
+    width: 500px;
+  }
+}
+
+
+.headElement {
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  height: 60px;
+  text-align: center;
+  background-color:#007FFF;
+
+}
+
+.flexContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgContainer {
+  display: flex;
+
+}
+
+.textContainer {
+  display: flex;
+
+}
+
+
 #map {
   float: left;
   height: 600px;
   width: 100%;
 }
 
+#avansertSok {
+  position: absolute;
+  padding: 10px;
+  top: 100px;
+  left: 20%;
+  right: 20%;
+  background-color: gray;
+}
+
+.avansertOption {
+  display: flex;
+  flex-direction: row;
+}
+
 tr:nth-child(odd) {
   background-color: #CCCCCC;
-}
-
-table {
-  table-layout: auto;
-  width: 80%;
-  margin: auto;
-}
-
-table, th, td, tr {
-  border-collapse: collapse;
-}
-
-#sok {
-  background-color: green;
-  height: 100px;
-  width: 80%;
-  margin: auto;
 }
 
 a{
@@ -65,8 +147,8 @@ h3{
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  border: 2px;
-  border-style: solid;
+
+  background-color: white;
 }
 
 .contentLeft {
@@ -78,6 +160,25 @@ h3{
 }
 
 .contentRight {
+
+}
+
+.mobileContent {
+}
+
+.indexBody {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+
+}
+
+.bodybody {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
 
 }
 
@@ -141,7 +242,7 @@ h3{
 }
 
 .layoutElement1{
-  height: 225px;
+  height: 150px;
 }
 
 .content{

@@ -4,25 +4,89 @@
       <meta charset="utf-8">
       <title>Hovedside</title>
       <script type="text/javascript" src="js/js.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 1440px)" href="css/stationaryStyle.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 1100px) and (max-width: 1440px)" href="css/laptopStyle.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 600px) and (max-width: 1100px)" href="css/tabletStyle.css">
+      <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)"href="css/mobileStyle.css">
+    -->
     </head>
-    <body onload="playVid();">
-        <!-- Dette er ikke en video av Bergen, men toget Lillehammer-Oslo. Skal erstattes senere. -->
-        <div class="video">
-          <video id="vid">
-            <source src="media/movie.webm" type="video/webm" autoplay>
-          </video>
-        </div>
-
+    <body>
     <div class="contentbody">
       <div class="content">
-        <div class="layoutElement1"></div>
-          <div class="headElement"> <img src="media/BergenLogo.png" width="600px"></img> </div>
+          <div class="headElement"> <img src="img/bergenlogoblack.png" class="logo"></img> </div>
+          <div class="layoutElement1"></div>
             <div class="main">
 
+              <div class="indexBody">
+
+                <!-- anbefalinger -->
+                <div class="flexContent">
+                  <div class="imgContainer"  style="float: left;">
+                      <a href="pages/anbefalinger.html">
+                        <img src="img/anbefalinger.png" width="300px" height="450px"></img>
+                      </a>
+
+                      <div class="textContainer" style="float: right;">
+                        <p style="padding: 10px"> Usikker på hva du bør gjøre i Bergen? Sjekk våre anbefalinger! </p>
+                      </div>
+                  </div>
+                </div>
+
+
+                <!--toaletter og lekeplass -->
+                <div class="flexContent">
+                    <div class="textContainer" style="float: left;">
+                      <p style="padding: 10px;"> Trenger familien ett avbrekk i turistverdagen? Få en oversikt over Bergens lekeplasser! </p>
+                    </div>
+                    <div class="imgContainer" style="float: right;">
+                      <a href="pages/hotspots.html">
+                        <img src="img/hotspots.png" width="300px" height="450px"></img>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br>
+              <br>
+              <br>
+
+                <div class="mobileContent">
+                  <div class="contentBox">
+                    <div class="contentLeft">
+                      <a href="pages/anbefalinger.html">
+                        <img src="img/anbefalinger.png" width="125px"></img>
+                      </a>
+                    </div>
+                    <div class="contentCenter">
+                      <h3> Anbefalinger </h3>
+                      <p> Usikker på hva du bør gjøre i Bergen? Sjekk våre anbefalinger! </p>
+                      </div>
+                    <div class="contentRight"></div>
+                  </div>
+
+                  <div class="contentBox">
+                    <div class="contentLeft">
+                      <a href="pages/hotspots.html">
+                      <img src="img/hotspots.png" width="125px"></img>
+                      </a>
+                    </div>
+                    <div class="contentCenter">
+                      <h3> Hotspots </h3>
+                      <p> Trenger du ett toalett? Få oversikten med vårt kart! </p>
+                      </div>
+                    <div class="contentRight"></div>
+                  </div>
+                </div>
+
+
+              <!--
               <div class="anbefalinger">
-                <a href="anbefalinger.html">
-                  <img src="media/anbefalinger.png" width="100%"></img>
+                <a href="pages/anbefalinger.html">
+                  <img src="img/anbefalinger.png" width="100%"></img>
                   <div class="titles">
                     <h2> Anbefalinger </h2>
                   </div>
@@ -34,7 +98,8 @@
               </div>
 
               <div class="hotspots">
-                <a href="hotspots.html"><img src="media/hotspots.png" width="100%"></img>
+                <a href="pages/hotspots.html">
+                  <img src="img/hotspots.png" width="100%"></img>
                   <div class="titles">
                     <h2> Hotspots </h2>
                   </div>
@@ -45,6 +110,7 @@
                 </a>
               </div>
             </div>
+            -->
           </div>
         </div>
       </div>
