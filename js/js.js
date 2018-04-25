@@ -45,6 +45,10 @@ function populateList(response, url) {
     response.forEach(element => {
       list.innerHTML += "<li>" + element["plassering"] + "</li>";
     });
+  } else if(lekeplassReex.test(url)) {
+    response.forEach(element => {
+      list.innerHTML += "<li>" + element["navn"] + "</li>";
+    })
   }
 }
 
