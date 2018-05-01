@@ -25,7 +25,7 @@ function loadJSON(url, favoritt) {
     if (request.status === 200) {
       if(dodelighetRegex.test(url)) {
         response = request.response["dataset"];
-      } if(favoritt == 1) {
+      } else if(favoritt == 1) {
         lekeplass = request.response["entries"];
       } else {
         response = request.response["entries"];
@@ -35,6 +35,13 @@ function loadJSON(url, favoritt) {
     }
   };
   request.send(null);
+}
+
+function deathSearch() {
+  var male = document.getElementById("male").checked;
+  var female = document.getElementById("female").checked;
+  var age = document.getElementById("age").value;
+  console.log(male + "   " + female + "   " + age);
 }
 
 function search() {
@@ -203,7 +210,6 @@ function initLekeplass() {
 
 // Laster JSON til dodelighet.html
 function initDodelighet() {
-  initMap();
   urlG = "http://data.ssb.no/api/v0/dataset/102811.json";
   loadJSON(urlG, 0);
 }
