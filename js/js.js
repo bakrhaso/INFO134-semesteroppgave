@@ -2,6 +2,7 @@ console.log("tekst"); // Printer "tekst" i konsollen
 
 var map; // Variabel for å referere til Google kartet
 var response; // Variabel for datasett
+var lekeplass; // Variabel for lekeplass, siden man trenge to datasett for til minfavorittlekeplass.html
 var markers = []; // Google Map markers
 var urlG = ""; // JSON URL
 
@@ -15,7 +16,7 @@ function initMap() {
 }
 
 // Laster inn JSON-fil basert på URL
-function loadJSON(url) {
+function loadJSON(url, favoritt) {
   var dodelighetRegex = /102811/;
   var request = new XMLHttpRequest();
   request.responseType = 'json';
@@ -24,6 +25,8 @@ function loadJSON(url) {
     if (request.status === 200) {
       if(dodelighetRegex.test(url)) {
         response = request.response["dataset"];
+      } if(favoritt == 1) {
+        lekeplass = request.response["entries"];
       } else {
         response = request.response["entries"];
         populateMap(response);
@@ -187,20 +190,27 @@ function playVid() {
 // Laster inn kart og rett JSON url for hotspots.html
 function initHotspots() {
   initMap();
-  urlG = "https://hotell.difi.no/api/json/bergen/dokart"
-  loadJSON(urlG);
+  urlG = "https://hotell.difi.no/api/json/bergen/dokart";
+  loadJSON(urlG, 0);
 }
 
 // Laster inn kart og rett JSON url for lekeplass.html
 function initLekeplass() {
   initMap();
-  urlG = "https://hotell.difi.no/api/json/bergen/lekeplasser"
-  loadJSON(urlG);
+  urlG = "https://hotell.difi.no/api/json/bergen/lekeplasser";
+  loadJSON(urlG, 0);
 }
 
 // Laster JSON til dodelighet.html
-function initLekeplass() {
+function initDodelighet() {
   initMap();
-  urlG = "http://data.ssb.no/api/v0/dataset/102811.json"
-  loadJSON(urlG);
+  urlG = "http://data.ssb.no/api/v0/dataset/102811.json";
+  loadJSON(urlG, 0);
+}
+
+// Last json til minfavorittlekeplass.html
+function initFavoritt() {
+  initMap();
+  loadJSON("https://hotell.difi.no/api/json/bergen/dokart", 0);
+  loadJSON("https://hotell.difi.no/api/json/bergen/lekeplasser", 1)
 }
