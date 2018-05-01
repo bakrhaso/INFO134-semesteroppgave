@@ -1,6 +1,6 @@
 console.log("tekst"); // Printer "tekst" i konsollen
 
-var map;
+var map; // Variabel for å referere til Google kartet
 
 // Initialiserer kartet
 function initMap() {
@@ -26,6 +26,7 @@ function loadJSON(url) {
   request.send(null);
 }
 
+// Legger til Markers på Google kartet, bruker response fra loadJSON
 function populateMap(response) {
   var i = 1;
   response.forEach(element => {
@@ -35,17 +36,17 @@ function populateMap(response) {
   });
 }
 
+// Legger til navn på lekeplass/toalett i liste, bruker response fra loadJSON
 function populateList(response, url) {
   var toalettRegex = /dokart/;
-  var lekeplassReex = /lekeplass/;
+  var lekeplassRegex = /lekeplass/;
   var list = document.getElementById("list");
-  console.log(list);
 
   if(toalettRegex.test(url)) {
     response.forEach(element => {
       list.innerHTML += "<li>" + element["plassering"] + "</li>";
     });
-  } else if(lekeplassReex.test(url)) {
+  } else if(lekeplassRegex.test(url)) {
     response.forEach(element => {
       list.innerHTML += "<li>" + element["navn"] + "</li>";
     })
@@ -60,7 +61,14 @@ function playVid() {
   vid.load();
 }
 
+// Laster inn kart og rett JSON url for hotspots.html
 function initHotspots() {
   initMap();
   loadJSON("https://hotell.difi.no/api/json/bergen/dokart");
+}
+
+// Laster inn kart og rett JSON url for lekeplass.html
+function initLekeplass() {
+  initMap();
+  loadJSON("https://hotell.difi.no/api/json/bergen/lekeplasser");
 }
