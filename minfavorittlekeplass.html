@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Min favoritt lekeplass</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/js.js"> </script>
+
+  </head>
+  <body onload="initFavoritt();">
+
+    <div id="map"></div>
+    <div class="headElement"><a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img> </a> </div>
+    <div class="layoutElement1"></div>
+
+    <div class="content">
+
+      <div class="selectFlex">
+        <select id="select">
+        </select>
+        <button onclick="getList();"> hent liste </button>
+      </div>
+
+      <div class="doListe">
+        <ol id="ordered"></ol>
+      </div>
+
+      <div>
+        <a href="index.html"><h1> BACK <h1></a>
+      </div>
+    </div>
+
+      <footer>
+        <p> Kontakt: Inormasjon fjernet </p>
+      </footer>
+
+  </body>
+</html>
