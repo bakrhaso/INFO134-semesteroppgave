@@ -1,6 +1,7 @@
 console.log("tekst"); // Printer "tekst" i konsollen
 
 var map; // Variabel for å referere til Google kartet
+var response; // Variabel for datasett
 
 // Initialiserer kartet
 function initMap() {
@@ -13,14 +14,19 @@ function initMap() {
 
 // Laster inn JSON-fil basert på URL
 function loadJSON(url) {
+  var dodelighetRegex = /102811/;
   var request = new XMLHttpRequest();
   request.responseType = 'json';
   request.open('GET', url, true);
   request.onload = function() {
     if (request.status === 200) {
-      var response = request.response["entries"];
-      populateMap(response);
-      populateList(response, url);
+      if(dodelighetRegex.test(url)) {
+        response = request.response["dataset"];
+      } else {
+        response = request.response["entries"];
+        populateMap(response);
+        populateList(response, url);
+      }
     }
   };
   request.send(null);
@@ -71,4 +77,10 @@ function initHotspots() {
 function initLekeplass() {
   initMap();
   loadJSON("https://hotell.difi.no/api/json/bergen/lekeplasser");
+}
+
+// Laster JSON til dodelighet.html
+function initLekeplass() {
+  initMap();
+  loadJSON("http://data.ssb.no/api/v0/dataset/102811.json");
 }
