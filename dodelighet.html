@@ -2,17 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Lekeplasser</title>
+    <title>Dødelighet</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script type="text/javascript" src="js/js.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX_rbgUvwvMSF_7NJ5jqhSdEG7qNrpAQE"></script>
   </head>
-  <body onload="initLekeplass();">
+  <body onload="initDodelighet();">
     <div class="headElement"> <a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img></a> </div>
     <div class="layoutElement1"></div>
-    <div id="map"></div>
-    <div>
-      <ol id="list"></ol>
+    <div class="deathSearch" id="kjonn">
+        Male: <input type="checkbox" id="male">
+        Female: <input type="checkbox" id="female">
+    </div>
+    <div class="deathSearch" id="alder">
+        Alder: <input 
     </div>
   </body>
 </html>
