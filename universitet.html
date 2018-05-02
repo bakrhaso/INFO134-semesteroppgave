@@ -8,24 +8,25 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX_rbgUvwvMSF_7NJ5jqhSdEG7qNrpAQE"></script>
   </head>
   <body onload="initUni();">
-    <div class="headElement"> <a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img></a> </div>
-    <div class="layoutElement1"></div>
     <div class="content">
+      <div class="headerlement"> <a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img></a> </div>
+      <div class="layoutElement1"></div>
       <div>
-        Fakultet: <select><option value="HF">HF</option>
+        Fakultet: <select id="fak"><option value="HF">HF</option>
                   <option value="SV">SV</option>
                   <option value="JUS">JUS</option>
                   <option value="PSYK">PSYK</option>
                   <option value="MN">MN</option>
                   <option value="KMD">KMD</option>
-                  <option value="MED">MED</option></select>
-        Romtype: <select><option value="sem">Seminarrom</option>
-                 <option value="les">Lesesal</option>
-                 <option value="aud">Auditorium</option>
-                 <option value="pc">PC-sal</option>
-                 <option value="kol">Kollokvierom</option>
-                 <option value="ove">Øvingsrom</option>
-                 <option value="fer">Ferdighetsrom</option></select>
+                  <option value="MED">MED</option></select> <br/>
+         Romtype: <select id="rom"><option value="SEM">Seminarrom</option>
+                  <option value="LESESAL">Lesesal</option>
+                  <option value="AUD">Auditorium</option>
+                  <option value="PC">PC-rom</option>
+                  <option value="KOLL">Kollokvierom</option>
+                  <option value="ØV">Øvingsrom</option>
+                  <option value="FERD">Ferdighetsrom</option></select>
+              Søk <button onclick="finnRom();">Finn rom</button>
       </div>
       <div>
         <ol id="list"></ol>

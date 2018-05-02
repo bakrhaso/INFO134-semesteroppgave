@@ -5,8 +5,7 @@ var response; // Variabel for datasett
 var lekeplass; // Variabel for lekeplass, siden man trenge to datasett for til minfavorittlekeplass.html
 var markers = []; // Google Map markers
 var urlG = ""; // JSON URL
-var geocoder;
-var uibRom;
+var uibRom; // Variabel for uib-rom arrayet
 
 // Initialiserer kartet
 function initMap() {
@@ -15,10 +14,11 @@ function initMap() {
     zoom: 14,
     center: bergen
   });
-  geocoder = new google.maps.Geocoder();
 }
 
 // Laster inn JSON-fil basert på URL
+// Noen sider krever annerledes håndtering av JSONen, derfor bruker vi en variabel (favoritt, siden det begynte med minfavorittlekeplass.html)
+// Variablen viser hvilken måte JSONen burde håndteres på.
 function loadJSON(url, favoritt) {
   var request = new XMLHttpRequest();
   request.responseType = 'json';
@@ -28,7 +28,6 @@ function loadJSON(url, favoritt) {
       lekeplass = request.response["entries"];
     } else if(favoritt == 2) {
       uibRom = request.response["data"];
-      uibStuff();
     } else {
       response = request.response["entries"];
       populateMap(response);
@@ -38,10 +37,23 @@ function loadJSON(url, favoritt) {
   request.send(null);
 }
 
-function uibStuff() {
-  console.log(uibRom);
+// Denne funksjonene tar imot to verdier som brukerene velger og viser alle rommene som er under det fakultet og som er av den rette romtypen
+function finnRom() {
+  var fakultet = document.getElementById("fak").value;
+  var romtype = document.getElementById("rom").value;
+  var liste = document.getElementById("list");
+  clearList();
+
+  uibRom.forEach(e => {
+    if(e["areaname"].includes(fakultet) && e["typeid"] == romtype) {
+      list.innerHTML += "<li>" + e["name"] + ", " + e["buildingname"] + ' <a href="' + e["roomurl"] + '">URL</a></li>';
+    }
+  });
 }
 
+// I skrivende stund fungerer det ikke å søke basert på når toalettet er åpent
+// Brukeren kan søke basert på kjønn, pris, stellerom, og om man kan bruke rullestol
+// Toalettene som passer kriteriene vises på kartet og på listen
 function search() {
   document.getElementById("hidden").style.display = 'block';
   document.getElementById("normalSearch").style.display = 'none';
@@ -90,10 +102,11 @@ function search() {
 
   populateMap(result);
   populateList(result);
-
-  console.log(toalettObj);
 }
 
+// I skrivende stund fungerer det ikke å søke basert på når toalettet er åpent
+// Brukeren kan søke basert på kjønn, pris, stellerom, og om man kan bruke rullestol
+// Toalettene som passer kriteriene vises på kartet og på listen
 function quickSearch() {
   var query = document.getElementById('searchField').value.split(" ");
   var toalettObj = {"herre":"","dame":"","stellerom":"","rullestol":"","pris":""}
@@ -142,21 +155,21 @@ function quickSearch() {
 
   populateMap(result);
   populateList(result);
-
-  console.log(toalettObj);
 }
 
+// Fjerner markers fra kartet
 function clearMarkers() {
   markers.forEach(element => {
     element.setMap(null);
   })
 }
 
+// Tømmer listen
 function clearList() {
   document.getElementById("list").innerHTML = "";
 }
 
-// Legger til Markers på Google kartet, bruker response fra loadJSON
+// Legger til Markers på Google kartet, tar imot et array som må ha punktene "latitude" og "longitude"
 function populateMap(objarr) {
   var i = 1;
   objarr.forEach(element => {
@@ -167,7 +180,7 @@ function populateMap(objarr) {
   });
 }
 
-// Legger til navn på lekeplass/toalett i liste, bruker response fra loadJSON
+// Legger til navn på lekeplass/toalett i liste. Bruker regex for å bestemme hvilket punkt fra arrayet som skal skrives
 function populateList(objarr) {
   var toalettRegex = /dokart/;
   var lekeplassRegex = /lekeplass/;
