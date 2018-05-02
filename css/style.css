@@ -7,9 +7,12 @@
     display: none;
   }
   .logo {
-    width: 150px;
+    width: 250px;
   }
-
+  .mobileImg{
+    width: 125px;
+    height: 125px;
+  }
   select {
     width: 200px;
     height: 60px;
@@ -34,9 +37,12 @@
     display: none;
   }
   .logo {
-    width: 250px;
+    width: 350px;
   }
-
+  .mobileImg{
+    width: 200px;
+    height: 200px;
+  }
   select {
     width: 200px;
     height: 60px;
@@ -112,6 +118,7 @@ Style blir mer definert i html dokumentet for å skape høyre-venstre motivet */
 Style blir mer definert i html dokumentet for å skape høyre-venstre motivet */
 .textContainer {
   display: flex;
+  flex-direction: column;
 }
 
 /* h3 brukes som overskrift diverse steder */
@@ -119,6 +126,14 @@ h3{
   font-family: "helvetica";
   font-size: 25px;
   color: black;
+}
+
+/* h3 blir brukt som overskrift i indexBody */
+h4{
+  font-family: "helvetica";
+  font-size: 25px;
+  color: black;
+  padding-left: 10px;
 }
 
 /* Denne klassen danner boksene på anbefalinger.html.
@@ -153,7 +168,7 @@ Dersom brukeren ikke er på mobil eller nettbrett blir den gjemt */
 
 }
 
-/* Denne klassen holder innhold som skal brukes på laptop og stasjonær.
+/* Denne klassen holder innhold som skal brukes på laptop og desktop.
 Hvis brukeren er på mobil eller tablet blir det fjenet */
 .indexBody {
 
