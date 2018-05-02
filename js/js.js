@@ -5,6 +5,8 @@ var response; // Variabel for datasett
 var lekeplass; // Variabel for lekeplass, siden man trenge to datasett for til minfavorittlekeplass.html
 var markers = []; // Google Map markers
 var urlG = ""; // JSON URL
+var geocoder;
+var uibRom;
 
 // Initialiserer kartet
 function initMap() {
@@ -13,35 +15,31 @@ function initMap() {
     zoom: 14,
     center: bergen
   });
+  geocoder = new google.maps.Geocoder();
 }
 
 // Laster inn JSON-fil basert på URL
 function loadJSON(url, favoritt) {
-  var dodelighetRegex = /102811/;
   var request = new XMLHttpRequest();
   request.responseType = 'json';
   request.open('GET', url, true);
   request.onload = function() {
-    if (request.status === 200) {
-      if(dodelighetRegex.test(url)) {
-        response = request.response["dataset"];
-      } else if(favoritt == 1) {
-        lekeplass = request.response["entries"];
-      } else {
-        response = request.response["entries"];
-        populateMap(response);
-        populateList(response);
-      }
+    if(favoritt == 1) {
+      lekeplass = request.response["entries"];
+    } else if(favoritt == 2) {
+      uibRom = request.response["data"];
+      uibStuff();
+    } else {
+      response = request.response["entries"];
+      populateMap(response);
+      populateList(response);
     }
   };
   request.send(null);
 }
 
-function deathSearch() {
-  var male = document.getElementById("male").checked;
-  var female = document.getElementById("female").checked;
-  var age = document.getElementById("age").value;
-  console.log(male + "   " + female + "   " + age);
+function uibStuff() {
+  console.log(uibRom);
 }
 
 function search() {
@@ -186,14 +184,6 @@ function populateList(objarr) {
   }
 }
 
-// Starter videoen i index.html, looper
-function playVid() {
-  var vid = document.getElementById('vid');
-  vid.autoplay = true;
-  vid.loop = true;
-  vid.load();
-}
-
 // Laster inn kart og rett JSON url for hotspots.html
 function initHotspots() {
   initMap();
@@ -208,10 +198,10 @@ function initLekeplass() {
   loadJSON(urlG, 0);
 }
 
-// Laster JSON til dodelighet.html
-function initDodelighet() {
-  urlG = "http://data.ssb.no/api/v0/dataset/102811.json";
-  loadJSON(urlG, 0);
+// Laster JSON til universitet.html
+function initUni() {
+  urlG = "https://tp.data.uib.no/KEYu5uwu3yge/ws/room/2.0/allrooms.php";
+  loadJSON(urlG, 2);
 }
 
 // Last json til minfavorittlekeplass.html
