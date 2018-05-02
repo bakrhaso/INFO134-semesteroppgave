@@ -47,7 +47,7 @@ function search() {
   document.getElementById("normalSearch").style.display = 'none';
 
   var toalettObj = {"herre":"","dame":"","stellerom":"","rullestol":"","pris":""}
-  
+
   if(document.getElementById("male").checked) {
     toalettObj["herre"] = "1";
   }
@@ -72,7 +72,7 @@ function search() {
   var minutt = new Date().getMinutes();
   if(element == "åpen") {
 
-  } 
+  }
   */
 
   clearMarkers();
@@ -97,7 +97,7 @@ function search() {
 function quickSearch() {
   var query = document.getElementById('searchField').value.split(" ");
   var toalettObj = {"herre":"","dame":"","stellerom":"","rullestol":"","pris":""}
-  
+
   query.forEach(element => {
     if(element == "kjønn:mann") {
       toalettObj["herre"] = "1";
@@ -113,7 +113,7 @@ function quickSearch() {
     }
     if(element == "gratis") {
       toalettObj["pris"] = "0";
-    } 
+    }
     if(element == "rullestol") {
       toalettObj["rullestol"] = "1";
     }
@@ -123,7 +123,7 @@ function quickSearch() {
     var minutt = new Date().getMinutes();
     if(element == "åpen") {
 
-    } 
+    }
     */
   })
 
@@ -209,6 +209,7 @@ function initFavoritt() {
   initMap();
   loadJSON("https://hotell.difi.no/api/json/bergen/dokart", 0);
   loadJSON("https://hotell.difi.no/api/json/bergen/lekeplasser", 1)
+  setTimeout(function(){populateSelect();}, 1000);
 }
 
 //Oppgave 7
@@ -267,7 +268,7 @@ function getClosest(){
                     "<p> herre: " + isTrue(closest.herre) + "</p>" +
                     "<p> dame: " + isTrue(closest.dame) + "</p>" +
                     "<p> kun pissoar: " + isTrue(closest.pissoir_only) + "</p>" +
-                    "<p> pris: " + closest.pris + "</p>" +
+                    "<p> pris: " + isGratis(closest.pris) + "</p>" +
                     "<p> rullestol: " + isTrue(closest.rullestol) + "</p>" +
                     "<p> stellerom: " + isTrue(closest.stellerom) + "</p>" +
                     "<p> hverdag: " + isClosed(closest.tid_hverdag) + "</p>" +
@@ -278,8 +279,18 @@ function getClosest(){
 function isClosed(dag){
   if(dag == "NULL") {
     return "stengt";
+  } else if(dag == "ALL"){
+    return "døgnåpent"
   } else {
     return dag;
+  }
+}
+
+function isGratis(pris){
+  if(pris == "NULL" || pris == "0"){
+    return "gratis";
+  } else {
+    return pris + "kr";
   }
 }
 
