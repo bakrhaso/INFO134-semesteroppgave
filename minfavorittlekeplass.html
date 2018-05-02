@@ -5,25 +5,28 @@
     <title>Min favoritt lekeplass</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script type="text/javascript" src="js/js.js"> </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX_rbgUvwvMSF_7NJ5jqhSdEG7qNrpAQE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX_rbgUvwvMSF_7NJ5jqhSdEG7qNrpAQE%22%3E"></script>
 
   </head>
   <body onload="initFavoritt();">
 
-    <div id="map"></div>
     <div class="headElement"><a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img> </a> </div>
     <div class="layoutElement1"></div>
-
     <div class="content">
+      <div id="map" style="display: none;"></div>
 
       <div class="selectFlex">
         <select id="select">
         </select>
-        <button onclick="getList();"> hent liste </button>
+        <button onclick="getClosest();"> hent nærmeste toalett </button>
       </div>
 
       <div class="doListe">
         <ol id="ordered"></ol>
+      </div>
+
+      <div id="closest">
+
       </div>
 
       <div>
