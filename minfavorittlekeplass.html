@@ -9,34 +9,21 @@
 
   </head>
   <body onload="initFavoritt();">
-
+    <div class="content">
     <div class="headElement"><a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img> </a> </div>
     <div class="layoutElement1"></div>
-    <div class="content">
       <div id="map" style="display: none;"></div>
 
       <div class="selectFlex">
+        <!-- en liste over lekeplasser blir hentet ut av initFavoritt funksjonene og blir lagt til i select elementet som options -->
         <select id="select">
         </select>
+        <!-- button kaller getclosest() funksjonen som sammenligner lekeplassene med alle toaletter og henter ut informasjonen til det nærmest toalettet-->
         <button onclick="getClosest();"> hent nærmeste toalett </button>
       </div>
 
-      <div class="doListe">
-        <ol id="ordered"></ol>
-      </div>
-
-      <div id="closest">
-
-      </div>
-
-      <div>
-        <a href="index.html"><h1> BACK <h1></a>
-      </div>
+      <!-- informasjonen til toalettet legges her -->
+      <div id="closest"> </div>
     </div>
-
-      <footer>
-        <p> Kontakt: Inormasjon fjernet </p>
-      </footer>
-
   </body>
 </html>

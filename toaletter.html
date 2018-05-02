@@ -7,7 +7,7 @@
     <script type="text/javascript" src="js/js.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX_rbgUvwvMSF_7NJ5jqhSdEG7qNrpAQE"></script>
   </head>
-  <body onload="initHotspots();">
+  <body onload="initToaletter();">
     <div class="content">
 
     <div class="headElement"> <a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img></a> </div>
@@ -24,21 +24,25 @@
           'stellerom' viser toaletter med stellerom. <br/>
           'rullestol' viser toaletter som er tilpasset rullestolbrukere.
         </p>
+        <!-- enkelt søk, bruker kun tekst og tar parametre som beskrevet ovenfor -->
         <div id="normalSearch">
           <input type="text" placeholder="Search..." id="searchField">
           <button type="submit" onclick="quickSearch()">Søk</button>
           <button type="submit" onclick="search()">Avansert Søk</button>
         </div>
+        <!-- avansert søk hvor man bruker radiobuttons istedet for å skrive -->
         <div style="display: none;" id="hidden">
           <input type="radio" id="male" name="gender" value="male">Herre
           <input type="radio" id="female" name="gender" value="female">Kvinne <br/>
           <input type="radio" id="rulle" value="rullestol">Rullestol <br/>
           <input type="radio" id="stelle" value="stellerom">Stellerom <br/>
           <input type="text" id="pris" placeholder="Pris">
+          <!-- calle search funksjonen som lager en liste over resultatene -->
           <button type="submit" onclick="search()">Søk</button>
         </div>
       </div>
       <div>
+        <!-- listen over resultatene -->
         <ol id="list"></ol>
       </div>
     </div>

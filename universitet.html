@@ -12,6 +12,7 @@
       <div class="headerlement"> <a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img></a> </div>
       <div class="layoutElement1"></div>
       <div>
+        <!-- Liste over fakultetene i select-element -->
         Fakultet: <select id="fak"><option value="HF">HF</option>
                   <option value="SV">SV</option>
                   <option value="JUS">JUS</option>
@@ -19,6 +20,7 @@
                   <option value="MN">MN</option>
                   <option value="KMD">KMD</option>
                   <option value="MED">MED</option></select> <br/>
+         <!-- Liste over romtyper i select-element -->
          Romtype: <select id="rom"><option value="SEM">Seminarrom</option>
                   <option value="LESESAL">Lesesal</option>
                   <option value="AUD">Auditorium</option>
@@ -26,9 +28,11 @@
                   <option value="KOLL">Kollokvierom</option>
                   <option value="ØV">Øvingsrom</option>
                   <option value="FERD">Ferdighetsrom</option></select>
+                  <!-- Kaller finnrom funksjonene som endrer id="list" til en liste over rommene med hyperlenke -->
               Søk <button onclick="finnRom();">Finn rom</button>
       </div>
       <div>
+        <!-- list over resultatene -->
         <ol id="list"></ol>
       </div>
    </div>

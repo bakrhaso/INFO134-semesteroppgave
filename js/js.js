@@ -197,8 +197,8 @@ function populateList(objarr) {
   }
 }
 
-// Laster inn kart og rett JSON url for hotspots.html
-function initHotspots() {
+// Laster inn kart og rett JSON url for toaletter.html
+function initToaletter() {
   initMap();
   urlG = "https://hotell.difi.no/api/json/bergen/dokart";
   loadJSON(urlG, 0);
@@ -225,12 +225,7 @@ function initFavoritt() {
   setTimeout(function(){populateSelect();}, 1000);
 }
 
-//Oppgave 7
-function pytagoras(a, b){
-  return Math.sqrt((a * a) + (b * b));
-}
-
-
+// Denne funksjonen fyller Select-elementet "select" fra minfavorittlekeplass.html med en liste over lekeplasser
 function populateSelect(){
   var select = document.getElementById("select");
   var id = 1;
@@ -240,19 +235,20 @@ function populateSelect(){
   });
 }
 
-
+// Henter ut ID-en som blir satt som value av populateSelect()-funksjonen,
 function getID() {
   var selector = document.getElementById('select');
   var value = selector[selector.selectedIndex].value;
   return value;
 }
 
-function newPosition(id, lat, lng){
-  this.id = id;
-  this.lat = lat;
-  this.lng = lng;
+// Pytagoras setning, blir brukt for å regne ut hypotenusen mellom to koordinater
+function pytagoras(a, b){
+  return Math.sqrt((a * a) + (b * b));
 }
 
+// Denne funksjonen finner lekeplassen som samsvarer med Valuen fra id="select" og finner toalettet som er nærmest.
+// Den tar så å representerer toalettet i id="closest".
 function getClosest(){
   var id = getID();
   var body = document.getElementById("closest");
@@ -289,6 +285,7 @@ function getClosest(){
                     "<p> søndag: " + isClosed(closest.tid_sondag) + "</p>";
 }
 
+// Denne funksjon tar en dag som parameter og returnerer "stengt", "døgnåpent", eller åpningstider
 function isClosed(dag){
   if(dag == "NULL") {
     return "stengt";
@@ -299,6 +296,7 @@ function isClosed(dag){
   }
 }
 
+// Denne funksjonen tar en pris som parameter og returnerer enten "gratis" eller pris i kroner
 function isGratis(pris){
   if(pris == "NULL" || pris == "0"){
     return "gratis";
@@ -307,6 +305,8 @@ function isGratis(pris){
   }
 }
 
+// Denne funksjonen tar en verdi fra JSON-ene, hvor true/false er representert som 1/0 eller "NULL", og returnerer "ja" eller "nei".
+// Den blir brukt for å si om toaletter er Herre/Dame, kun pissoar, rullestol og stellerom
 function isTrue(a){
   if(a == 1){
     return "ja";

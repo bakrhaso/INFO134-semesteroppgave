@@ -165,7 +165,7 @@ Den som regel ingenting i seg, men kan ha bilder o.l */
 /* Denne klassen holder innholder som vises dersom brukeren er på en mobil eller tablet.
 Dersom brukeren ikke er på mobil eller nettbrett blir den gjemt */
 .mobileContent {
-
+  
 }
 
 /* Denne klassen holder innhold som skal brukes på laptop og desktop.
