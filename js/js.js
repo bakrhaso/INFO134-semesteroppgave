@@ -210,3 +210,83 @@ function initFavoritt() {
   loadJSON("https://hotell.difi.no/api/json/bergen/dokart", 0);
   loadJSON("https://hotell.difi.no/api/json/bergen/lekeplasser", 1)
 }
+
+//Oppgave 7
+function pytagoras(a, b){
+  return Math.sqrt((a * a) + (b * b));
+}
+
+
+function populateSelect(){
+  var select = document.getElementById("select");
+  var id = 1;
+  lekeplass.forEach(element => {
+    select.innerHTML += '<option value= "' + id + '">' + element["navn"] + '</option>';
+    id++;
+  });
+}
+
+
+function getID() {
+  var selector = document.getElementById('select');
+  var value = selector[selector.selectedIndex].value;
+  return value;
+}
+
+function newPosition(id, lat, lng){
+  this.id = id;
+  this.lat = lat;
+  this.lng = lng;
+}
+
+function getClosest(){
+  var id = getID();
+  var body = document.getElementById("closest");
+  var pos;
+  var toCompare;
+  var distanceShortest = 1;
+  var distanceToCompare;
+  var closest;
+
+  lekeplass.forEach(element => {
+    if(id == element["id"]){
+      pos = {lat: element["latitude"], lng: element["longitude"]};
+    }
+  });
+  response.forEach(element => {
+    toCompare = {lat: element["latitude"], lng: element["longitude"]};
+    distanceToCompare = pytagoras((pos.lat - toCompare.lat), (pos.lng - toCompare.lng));
+    if(distanceToCompare < distanceShortest){
+      distanceShortest = distanceToCompare;
+      closest = element;
+    }
+  });
+
+  body.innerHTML =  "<h4>" + closest.plassering + "</h4>" +
+                      "<p> adresse: " + closest.adresse + "</p>" +
+                    "<p> herre: " + isTrue(closest.herre) + "</p>" +
+                    "<p> dame: " + isTrue(closest.dame) + "</p>" +
+                    "<p> kun pissoar: " + isTrue(closest.pissoir_only) + "</p>" +
+                    "<p> pris: " + closest.pris + "</p>" +
+                    "<p> rullestol: " + isTrue(closest.rullestol) + "</p>" +
+                    "<p> stellerom: " + isTrue(closest.stellerom) + "</p>" +
+                    "<p> hverdag: " + isClosed(closest.tid_hverdag) + "</p>" +
+                    "<p> lørdag: " + isClosed(closest.tid_lordag) + "</p>" +
+                    "<p> søndag: " + isClosed(closest.tid_sondag) + "</p>";
+}
+
+function isClosed(dag){
+  if(dag == "NULL") {
+    return "stengt";
+  } else {
+    return dag;
+  }
+}
+
+function isTrue(a){
+  if(a == 1){
+    return "ja";
+  } else {
+    return "nei";
+  }
+}
