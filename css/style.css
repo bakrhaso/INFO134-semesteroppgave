@@ -11,12 +11,12 @@
   }
 
   select {
-    width: 150px;
+    width: 200px;
     height: 60px;
     font-size: larger;
   }
   button {
-    width: 150px;
+    width: 200px;
     height: 60px;
     font-size: larger;
   }
@@ -38,12 +38,12 @@
   }
 
   select {
-    width: 150px;
+    width: 200px;
     height: 60px;
     font-size: larger;
   }
   button {
-    width: 150px;
+    width: 200px;
     height: 60px;
     font-size: larger;
   }
