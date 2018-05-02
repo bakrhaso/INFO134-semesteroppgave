@@ -59,7 +59,7 @@ function search() {
   document.getElementById("normalSearch").style.display = 'none';
 
   var toalettObj = {"herre":"","dame":"","stellerom":"","rullestol":"","pris":""}
-  
+
   if(document.getElementById("male").checked) {
     toalettObj["herre"] = "1";
   }
@@ -84,7 +84,7 @@ function search() {
   var minutt = new Date().getMinutes();
   if(element == "åpen") {
 
-  } 
+  }
   */
 
   clearMarkers();
@@ -110,7 +110,7 @@ function search() {
 function quickSearch() {
   var query = document.getElementById('searchField').value.split(" ");
   var toalettObj = {"herre":"","dame":"","stellerom":"","rullestol":"","pris":""}
-  
+
   query.forEach(element => {
     if(element == "kjønn:mann") {
       toalettObj["herre"] = "1";
@@ -126,7 +126,7 @@ function quickSearch() {
     }
     if(element == "gratis") {
       toalettObj["pris"] = "0";
-    } 
+    }
     if(element == "rullestol") {
       toalettObj["rullestol"] = "1";
     }
@@ -136,7 +136,7 @@ function quickSearch() {
     var minutt = new Date().getMinutes();
     if(element == "åpen") {
 
-    } 
+    }
     */
   })
 
@@ -222,4 +222,95 @@ function initFavoritt() {
   initMap();
   loadJSON("https://hotell.difi.no/api/json/bergen/dokart", 0);
   loadJSON("https://hotell.difi.no/api/json/bergen/lekeplasser", 1)
+  setTimeout(function(){populateSelect();}, 1000);
+}
+
+//Oppgave 7
+function pytagoras(a, b){
+  return Math.sqrt((a * a) + (b * b));
+}
+
+
+function populateSelect(){
+  var select = document.getElementById("select");
+  var id = 1;
+  lekeplass.forEach(element => {
+    select.innerHTML += '<option value= "' + id + '">' + element["navn"] + '</option>';
+    id++;
+  });
+}
+
+
+function getID() {
+  var selector = document.getElementById('select');
+  var value = selector[selector.selectedIndex].value;
+  return value;
+}
+
+function newPosition(id, lat, lng){
+  this.id = id;
+  this.lat = lat;
+  this.lng = lng;
+}
+
+function getClosest(){
+  var id = getID();
+  var body = document.getElementById("closest");
+  var pos;
+  var toCompare;
+  var distanceShortest = 1;
+  var distanceToCompare;
+  var closest;
+
+  lekeplass.forEach(element => {
+    if(id == element["id"]){
+      pos = {lat: element["latitude"], lng: element["longitude"]};
+    }
+  });
+  response.forEach(element => {
+    toCompare = {lat: element["latitude"], lng: element["longitude"]};
+    distanceToCompare = pytagoras((pos.lat - toCompare.lat), (pos.lng - toCompare.lng));
+    if(distanceToCompare < distanceShortest){
+      distanceShortest = distanceToCompare;
+      closest = element;
+    }
+  });
+
+  body.innerHTML =  "<h4>" + closest.plassering + "</h4>" +
+                      "<p> adresse: " + closest.adresse + "</p>" +
+                    "<p> herre: " + isTrue(closest.herre) + "</p>" +
+                    "<p> dame: " + isTrue(closest.dame) + "</p>" +
+                    "<p> kun pissoar: " + isTrue(closest.pissoir_only) + "</p>" +
+                    "<p> pris: " + isGratis(closest.pris) + "</p>" +
+                    "<p> rullestol: " + isTrue(closest.rullestol) + "</p>" +
+                    "<p> stellerom: " + isTrue(closest.stellerom) + "</p>" +
+                    "<p> hverdag: " + isClosed(closest.tid_hverdag) + "</p>" +
+                    "<p> lørdag: " + isClosed(closest.tid_lordag) + "</p>" +
+                    "<p> søndag: " + isClosed(closest.tid_sondag) + "</p>";
+}
+
+function isClosed(dag){
+  if(dag == "NULL") {
+    return "stengt";
+  } else if(dag == "ALL"){
+    return "døgnåpent"
+  } else {
+    return dag;
+  }
+}
+
+function isGratis(pris){
+  if(pris == "NULL" || pris == "0"){
+    return "gratis";
+  } else {
+    return pris + "kr";
+  }
+}
+
+function isTrue(a){
+  if(a == 1){
+    return "ja";
+  } else {
+    return "nei";
+  }
 }

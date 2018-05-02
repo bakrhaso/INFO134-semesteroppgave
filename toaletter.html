@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Toaletter</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/js.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX_rbgUvwvMSF_7NJ5jqhSdEG7qNrpAQE"></script>
+  </head>
+  <body onload="initHotspots();">
+    <div class="content">
+
+    <div class="headElement"> <a href="index.html"><img src="media/bergenlogoblack.png" class="logo"></img></a> </div>
+    <div class="layoutElement1"></div>
+    <div id="map"></div>
+
+      <div id="search">
+        <p>
+          'kjønn:mann' søker etter toaletter for menn, 'kjønn:kvinne' for kvinner. <br/>
+          'pris:15' viser toaletter som koster 15kr eller mindre. <br/>
+          'gratis' viser toaletter som er gratis. <br/>
+          'åpen' viser toaletter som er åpne. <br/>
+          'åpen:0900-1500' viser toaletter åpne mellom kl 9 og 15. <br/>
+          'stellerom' viser toaletter med stellerom. <br/>
+          'rullestol' viser toaletter som er tilpasset rullestolbrukere.
+        </p>
+        <div id="normalSearch">
+          <input type="text" placeholder="Search..." id="searchField">
+          <button type="submit" onclick="quickSearch()">Søk</button>
+          <button type="submit" onclick="search()">Avansert Søk</button>
+        </div>
+        <div style="display: none;" id="hidden">
+          <input type="radio" id="male" name="gender" value="male">Herre
+          <input type="radio" id="female" name="gender" value="female">Kvinne <br/>
+          <input type="radio" id="rulle" value="rullestol">Rullestol <br/>
+          <input type="radio" id="stelle" value="stellerom">Stellerom <br/>
+          <input type="text" id="pris" placeholder="Pris">
+          <button type="submit" onclick="search()">Søk</button>
+        </div>
+      </div>
+      <div>
+        <ol id="list"></ol>
+      </div>
+    </div>
+  </body>
+</html>
