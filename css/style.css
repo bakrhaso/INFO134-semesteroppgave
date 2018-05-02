@@ -3,7 +3,7 @@
   .mobileContent {
     display: inline;
   }
-  .indexBody {
+  .pageBody {
     display: none;
   }
   .logo {
@@ -54,8 +54,15 @@
     width: 500px;
   }
 }
+/* Slutten av @media queries */
 
+/* Denne ID-en setter stilen til kartene på toaletter.html og lekeplass.html */
+#map {
+  height: 600px;
+  width: 100%;
+}
 
+/* Denne klassen blir brukt til å holde på logo */
 .headElement {
   position: fixed;
   right: 0;
@@ -67,201 +74,78 @@
 
 }
 
+/* Denne klassen holder lenkene på index som leder til andre siden */
 .flexContent {
   display: flex;
   flex-direction: row;
 }
 
+/* Denne klassen inneholder bildene i en flexContent div.
+Style blir mer definert i html dokumentet for å skape høyre-venstre motivet */
 .imgContainer {
   display: flex;
 
 }
 
+/* Denne klassen inneholder teksten i en flexContent div.
+Style blir mer definert i html dokumentet for å skape høyre-venstre motivet */
 .textContainer {
   display: flex;
-
 }
 
-
-#map {
-  float: left;
-  height: 600px;
-  width: 100%;
-}
-
-#avansertSok {
-  position: absolute;
-  padding: 10px;
-  top: 100px;
-  left: 20%;
-  right: 20%;
-  background-color: gray;
-}
-
-.avansertOption {
-  display: flex;
-  flex-direction: row;
-}
-
-tr:nth-child(odd) {
-  background-color: #CCCCCC;
-}
-
-a{
-  text-decoration: none;
-}
-
-a:visited{
-  color: none;
-}
-
-video{
-  width: 100%;
-  margin: auto;
-}
-
-body {
-  background-color: white;
-  margin: 0;
-}
-
-h1 {
-  font-family: "helvetica";
-  font-size: 72px;
-}
-
-h2 {
-  font-family: "helvetica";
-  font-size: 25px;
-  color: white;
-}
-
+/* h3 brukes som overskrift diverse steder */
 h3{
   font-family: "helvetica";
   font-size: 25px;
   color: black;
 }
 
-/* anbefalinger.html */
+/* Denne klassen danner boksene på anbefalinger.html.
+Den blir også brukt på index.html hvis brukeren er på mobil ellet nettbrett */
 .contentBox {
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-
   background-color: white;
 }
 
+/* Denne klassen forskyver contentCenter.
+Den som regel ingenting i seg, men kan ha bilder o.l */
 .contentLeft {
 
 }
 
+/* Denne klassen holder innholdet i en contentBox */
 .contentCenter {
   width: 80%;
 }
 
+/* Denne klassen forskyver contentCenter.
+Den som regel ingenting i seg, men kan ha bilder o.l */
 .contentRight {
 
 }
 
+/* Denne klassen holder innholder som vises dersom brukeren er på en mobil eller tablet.
+Dersom brukeren ikke er på mobil eller nettbrett blir den gjemt */
 .mobileContent {
+
 }
 
+/* Denne klassen holder innhold som skal brukes på laptop og stasjonær.
+Hvis brukeren er på mobil eller tablet blir det fjenet */
 .indexBody {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin: auto;
 
 }
 
-.bodybody {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin: auto;
-
-}
-
-.titles{
-  position: relative;
-  margin-left: 15px;
-  top: -300px;
-
-}
-
-.main {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(	0,	0,	0, 0.5), rgba(0, 0, 0, 0));
-  overflow: hidden;
-  position: relative;
-  top: -300px;
-  width: 100%;
-  height: 200px;
-  opacity: 0;
-  transition: .5s ease;
-  color: white;
-  font-family: "helvetica";
-  font-size: 20px;
-}
-
-.overlay2 {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(	0,	0,	0, 0.5), rgba(0, 0, 0, 0));
-  overflow: hidden;
-  position: relative;
-  top: -300px;
-  width: 100%;
-  height: 200px;
-  opacity: 0;
-  transition: .5s ease;
-  color: white;
-  font-family: "helvetica";
-  font-size: 20px;
-}
-
-
-.anbefalinger{
-  width: 50%;
-}
-
-.hotspots{
-  width: 50%;
-}
-
-.anbefalinger:hover .overlay{
-  opacity: 1;
-}
-
-.hotspots:hover .overlay2{
-  opacity: 1;
-
-}
-
+/* Denne klassen forskyver innholdet på siden slik at det ikke
+krasjer med logo før brukeren har scrollet */
 .layoutElement1{
   height: 150px;
 }
 
+/* Denne klassen holder alt contentet på siden sentrert innenfor 60% av sidens bredde */
 .content{
   margin: auto;
   width: 60%;
-}
-
-.contentbody {
-  position: absolute;
-  top: 0px;
-  width: 100%
-}
-
-footer {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 40px;
-  text-align: center;
-  background-color:#007FFF;
 }
